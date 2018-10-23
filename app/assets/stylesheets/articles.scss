@@ -1,0 +1,377 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin breakpoint($point){
+	@if $point == sp{
+		@media screen and (max-width:768px){
+			@content;
+		}
+	}
+	@else if $point == pc{
+		@media screen and (min-width:769px){
+			@content;
+		}		
+	}
+}
+body {
+	color: #202020;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	-webkit-text-size-adjust: 100%;
+	font-family: "ヒラギノ角ゴPro W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+	line-height: 1.6;
+	background-color: #fff;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	min-width: 320px;
+}
+img {
+	max-width: 100%;
+}
+#header {
+	background-color: #f2f2f4;
+	padding: 10px;
+}
+.sub-title {
+	color: #202020;
+}
+.header-inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1020px;
+	margin: 0 auto;
+	.nav {
+		display: flex;
+		li + li {
+			margin-left: 20px;
+		}
+	}
+	
+}
+.site-logo {
+	a {
+		font-size: 36px;    
+	}
+}
+.sub-title {
+	margin-top: 10px;
+	font-size: 14px;
+}
+#wrapper {
+	max-width: 1020px;
+	margin: 0 auto;
+	padding: 50px 10px;
+	h2 {
+		text-align: center;   
+		font-size: 24px;
+		+ * {
+			margin-top: 30px;
+		}
+	}
+}
+.breadcrumbs {
+	max-width: 1020px;
+	margin: 0 auto;
+	padding: 10px;
+}
+.list_article {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -20px 0 0 -20px;
+	> li {
+		margin: 20px 0 0 20px;
+		flex: 0 1 calc(100% / 3 - 20px);
+		box-shadow: 0 0 4px rgba(128, 128, 128, 0.7);
+		height: 380px;
+		background: #fff;
+		position: relative;
+		border: 1px solid #737373;
+		box-sizing: border-box;
+		border-radius: 4px;
+		overflow: hidden;
+		&::before {
+			position: absolute;
+			width: 150px;
+			height: 150px;
+			transform: rotate(45deg);
+			content: "";
+			z-index: 1;
+			background: rgba(0, 0, 0, .3);
+			left: -75px;
+			top: -75px;
+		}
+		a {
+			display: block;
+			&:hover img {
+				transform: scale(1.1);
+			}
+		}
+	   .inner {
+			padding: 15px;
+			bottom: 0;
+			background: #fff;
+			width: calc(100% - 30px);
+			p {
+				margin-top: 10px;
+			  }
+			.like {
+				position: absolute;
+				left: 10px;
+				top: 5px;
+				color: #fff;
+				z-index: 2;
+			}
+			.content {
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+				border-bottom: 1px dashed #7d7d7d;
+				padding-bottom: 10px;
+			}
+			.timestamp {
+				font-size: 12px;
+				margin-top: 15px;
+			} 
+	   }
+	   
+	   .image {
+			height: 240px;
+			overflow:  hidden;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #ececec;
+			background-image: -webkit-gradient(linear, 0 0, 100% 100%,color-stop(.25, #F9F9F9), color-stop(.25, transparent),color-stop(.5, transparent), color-stop(.5, #F9F9F9),color-stop(.75, #F9F9F9), color-stop(.75, transparent),to(transparent));
+			-webkit-background-size: 14px 14px;
+		   img {
+				transition: transform .3s;
+				max-height: 100%;
+				max-width: 100%;
+		   }
+	   }
+	}
+	.title {
+		padding-bottom: 10px;
+		color: #333;
+		font-weight: normal;
+		font-size: 20px;
+		border-bottom: 1px dashed #7d7d7d;
+	}
+}
+.hdg {
+	font-size: 24px;
+}
+.contents{
+	max-Zwidth: 600px;
+	margin: 0 auto;
+	p {
+		margin-top: 10px;
+	}
+}
+.box-01 {
+	max-width: 600px;
+	margin: 0 auto;
+	box-shadow: 0 0 4px rgba(128, 128, 128, 0.7);
+	background: #fff;
+	border: 1px solid #737373;
+	box-sizing: border-box;
+	border-radius: 4px;
+	overflow: hidden;
+	+ .box-01 {
+		margin-top: 30px;
+	}
+	.inner {
+		padding: 15px;
+		> * {
+			margin-top: 10px;
+			border-bottom: 1px dashed #7d7d7d;
+			padding-bottom: 10px;
+			display: table;
+			width: 100%;
+		}
+		dt {
+			display: table-cell;
+			white-space: nowrap;
+			text-align: left;
+		}
+		dd {
+			display: table-cell;
+			text-align: left;
+			width: 100%;
+			line-height: 1.5;
+		}
+		a {
+			text-decoration: underline;
+		}
+		.image img {
+			width: 100%;
+		}
+		.shere {
+			display: inline-block;
+			border: none;
+			vertical-align: middle;
+			margin-left: 10px;
+		}
+		.like {
+			border-bottom: 1px dashed #7d7d7d;
+			a {
+				text-decoration: none;
+			}
+		}
+	}
+	.more_list {
+		display: flex;
+		li + li{
+			margin-left: 20px;
+		}
+	}
+}
+.like-btn {
+	color: #ff2581;    
+}
+@include breakpoint(pc){
+	.pc-show {
+		display: block;
+	}
+	.sp-show {
+		display: none;
+	}
+}
+@include breakpoint(sp){
+	#header {
+		padding: 10px;
+	}
+	.header-inner {
+		.nav {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			z-index: 3;
+			background: #f2f2f4;
+			width: 100%;
+			padding: 7px 0;
+			> li {
+				width: 25%;
+				text-align: center;
+				+ li {
+					margin-left: 0;
+				}
+			}
+			.fas, .fal, .far, .fas {
+				display: inline-block;
+				font-family: FontAwesome;
+				text-rendering: auto;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				font-size: 30px;
+				color: #737373;
+			}
+			&.logout{
+				> li {
+					width: 50%;
+				}				
+			}
+		}
+	}
+	#wrapper {
+		padding: 30px 10px 70px;
+	}
+	.list_article {
+		display: block;
+		> li {
+			height: auto;
+		}
+	}
+	.pc-show {
+		display: none;
+	}
+	.sp-show {
+		display: block;
+	}
+	
+}
+.success {
+	text-align: center;   
+	h3 {
+		font-size: 30px;
+	}
+	.btn {
+		font-size: 24px;
+		margin-top: 30px;
+		display: inline-block;
+	}
+}
+.hdg + * {
+	margin-top: 20px!important;
+}
+
+input:not([type="checkbox"]) {
+	border: 1px solid #737373;
+	font-size: 16px;
+	border-radius: 4px;
+	padding: 5px;
+	margin-top: 5px;
+	width: 300px;
+	box-sizing: border-box;
+	&.btn {
+		margin-top: 30px;
+		border: none;
+		color: #737373;
+		padding: 10px;
+		width: 300px;
+		background: #fff;
+		border: 1px solid #737373;
+	}
+}
+.field {    
+	margin-top: 15px;
+	width: 300px;
+	margin: 15px auto 0;
+}
+.actions {
+	text-align: center;
+}
+.new_article {
+    width: 300px;
+    margin: 0 auto;
+}
+.content {
+	width: 100%;
+}
+.about p {
+	line-height: 2;
+}
+.align-r {
+	text-align: right;
+}
+#footer {
+    background-color: #f2f2f4;
+    padding: 20px;
+    text-align: center;
+    a {
+    	text-decoration: underline;
+    }
+}
+.link {
+	text-align: right;
+	margin: 10px 0;
+	display: block;
+	a {
+		padding-left: 20px;
+		position: relative;
+		&::before {
+			position: absolute;
+			top: 4px;
+			left: 0;
+			border-top:2px solid #ccc;
+			border-right:2px solid #ccc;
+			transform: rotate(45deg);
+			content: "";
+			display: block;
+			width: 6px;
+			height: 6px;
+		}
+	}
+}

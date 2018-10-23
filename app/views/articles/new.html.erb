@@ -1,0 +1,16 @@
+<div class="contents row">
+  <%= form_for @article do |f| %>
+    <h3 class="hdg">作品投稿</h3>
+    <p>[必須] タイトルを入力してください</p>
+    <p><%= f.text_field :title %></p>
+    <p>[必須] URLを入力してください</p>
+    <p><%= f.text_field :url %></p>
+    <p>[必須] 作品について入力してください</p>
+    <p><%= f.text_area :content, class: 'content', rows: '5' %></p>
+    <p>[必須] 言語を入力してください</p>
+    <p><%= f.text_field :lang %></p>
+    <p>[必須] 画像を選択してください</p>
+    <p><%= f.file_field :image %></p>
+    <p><%= f.submit "送信", class: 'btn' %></p>
+  <% end %>
+</div>

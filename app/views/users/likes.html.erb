@@ -1,0 +1,21 @@
+<div class="contents row">
+<h2 class="hdg">いいね一覧</h2>
+  <ul class="user-tabs">
+    <li><p class="link"><%= link_to("/users/#{@user.id}") do %>投稿一覧へ<% end %></p></li>
+  </ul>
+<% @likes.each do |like| %>
+	<% article = Article.find_by(id: like.article_id) %>
+	<article class="box-01">
+		<% if article.image != "" %>
+			<div class="image"><%= image_tag article.image %></div>
+		<% end %>
+		<div class="inner">
+			<p class="developer">開発者：<%= current_user.developer %></p>
+			<p class="title">サービス名：<%= article.title %></p>
+			<p class="content">説明：<%= article.content %></p>
+			<p class="lang">言語：<%= article.lang %></p>
+			<p class="url">URL：<a href="<%= article.url %>" target="_blank"><%= article.url %></a></p>
+		</div>
+	</article>
+<% end %>
+</div>

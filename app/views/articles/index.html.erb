@@ -1,0 +1,5 @@
+<ul class="list_article">
+  <% @article.each do |article| %>
+    <%= render partial: "index", locals: { article: article } %> 
+  <% end %>
+</ul>

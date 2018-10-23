@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Launch</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header id="header">
+  <div class="header-inner">
+    <div class="logo-wrapper">
+      <h1 class="site-logo"><a href="/">Launch</a></h1>
+      <p class="sub-title">everyone cheer for your service</p>
+    </div>
+    <% if user_signed_in? %>
+    <div class="pc-show">
+      <ul class="nav">
+        <li><%= current_user.developer %>さん</li>
+        <li><%= link_to "新規投稿", new_article_path, method: :get %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <li><a href="/users/<%= current_user.id %>">マイページ</a></li>
+      </ul>
+    </div>
+    <div class="sp-show">
+      <ul class="nav">
+        <li><a href="/"><i class="fas fa-home"></i></a></li>
+        <li><%= link_to(new_article_path, {method: :get}) do %><i class="fal fa-plus-circle"></i><% end %></li>
+        <li><%= link_to(destroy_user_session_path, {method: :delete}) do %><i class="far fa-sign-out"></i><% end %></li>
+        <li><a href="/users/<%= current_user.id %>"><i class="fas fa-user"></i></a></li>
+      </ul>
+    </div>
+    <% else %>
+    <div class="pc-show">
+      <ul class="nav">
+        <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+        <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+      </ul>
+    </div>
+    <div class="sp-show">
+      <ul class="nav logout">
+        <li><%= link_to(new_user_session_path, {class: 'post'}) do %><i class="far fa-sign-in"></i><% end %></li>
+        <li><%= link_to(new_user_registration_path, {class: 'post'}) do %><i class="fas fa-user-plus"></i><% end %></li>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+</header>
+<%= breadcrumbs separator: " &rsaquo; " %>
+<main id="wrapper">
+  <%= yield %>
+</main>
+<footer id="footer">
+  <small>©<%= link_to 'Launch', page_path('about') %> All Rights Reserved.</small>
+</footer>
+</body>
+</html>

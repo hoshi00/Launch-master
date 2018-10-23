@@ -1,0 +1,36 @@
+<% breadcrumb :articles %>
+<article class="box-01">
+	<% if @article.image != "" %>
+		<div class="image"><%= image_tag @article.image %></div>
+	<% end %>
+	<dl class="inner">
+		
+		<div class="developer"><dt>開発者：</dt><dd><a href="<%= @article.user.developer %>" target="_blank"><%= @article.user.developer %></dd></a></div>
+		<div class="title"><dt>サービス名：</dt><dd><%= @article.title %></dd></div>
+		<div class="content"><dt>説明：</dt><dd><%= @article.content %></dd></div>
+		<div class="lang"><dt>言語：</dt><dd><%= @article.lang %></dd></div>
+		<div class="url"><dt>URL：</dt><dd><a href="<%= @article.url %>" target="_blank"><%= @article.url %></a></dd></div>
+		<div class="like"><dt>応援：</dt><dd>
+		<% if user_signed_in? %>
+			<% if Like.find_by(user_id: current_user.id, article_id: @article.id) %>
+				<%= link_to("/likes/#{@article.id}/destroy", {method: "post"}) do %>
+					<span class="fa fa-heart like-btn"></span>
+				<% end %>
+			<% else %>
+				<%= link_to("/likes/#{@article.id}/create", {method: "post"}) do %>
+					<span class="fa fa-heart like-btn-unlike"></span>
+				<% end %>
+			<% end %>
+		<% else %>
+			<% if Like.find_by(article_id: @article.id) %>
+				<span class="fa fa-heart like-btn"></span>
+			<% else %>
+				<span class="fa fa-heart like-btn-unlike"></span>
+			<% end %>
+		<% end %>
+			<%= Like.where(article_id: @article.id).count %>
+		<p class="shere"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw&text=<%= @article.title %>" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+		</dd>
+		</div>
+	</dl>
+</article>
