@@ -55,7 +55,6 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'paperclip'
 gem 'gretel'
-gem 'dotenv-rails'
 gem 'high_voltage'
 gem 'rspec-rails'
 group :production do

@@ -15,8 +15,8 @@ class ArticlesController < ApplicationController
 
     def create
         Article.create(title: article_params[:title], image: article_params[:image], content: article_params[:content],
-        lang: article_params[:lang], url: article_params[:url], user_id: current_user.id)
-        if article_params[:title] == "" || article_params[:image] == "" || article_params[:content] == "" || article_params[:lang] == "" || article_params[:url] == ""
+        lang: article_params[:lang], url: article_params[:url], user_id: current_user.id, pay_url: article_params[:pay_url])
+        if article_params[:title] == "" || article_params[:image] == "" || article_params[:content] == "" || article_params[:lang] == "" || article_params[:url] == "" || article_params[:pay_url] == ""
             redirect_to action: :new
         end
     end
@@ -46,12 +46,12 @@ class ArticlesController < ApplicationController
 
 
     def article_params
-        params.require(:article).permit(:title, :image, :content, :lang, :url)
+        params.require(:article).permit(:title, :image, :content, :lang, :url, :pay_url)
     end
 
-    def article_params_update
-        params.permit(:title, :image, :content, :lang, :url)
-    end
+    # def article_params_update
+    #     params.permit(:title, :image, :content, :lang, :url, :pay_url)
+    # end
     
     private 
     def move_to_index
