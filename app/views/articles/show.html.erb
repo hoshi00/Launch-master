@@ -10,7 +10,6 @@
 		<div class="content"><dt>説明：</dt><dd><%= @article.content %></dd></div>
 		<div class="lang"><dt>言語：</dt><dd><%= @article.lang %></dd></div>
 		<div class="url"><dt>URL：</dt><dd><a href="<%= @article.url %>" target="_blank"><%= @article.url %></a></dd></div>
-		<div class="pay-url"><dt>投げ銭：</dt><dd><a href="<%= @article.pay_url %>" target="_blank">サポートする</a></dd></div>
 		<div class="like"><dt>応援：</dt><dd>
 		<% if user_signed_in? %>
 			<% if Like.find_by(user_id: current_user.id, article_id: @article.id) %>

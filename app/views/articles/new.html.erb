@@ -9,9 +9,8 @@
     <p><%= f.text_area :content, class: 'content', rows: '5' %></p>
     <p>[必須] 言語を入力してください</p>
     <p><%= f.text_field :lang %></p>
-    <p>paypal.meリンクを入力してください</p>
-    <p><%= f.text_field :pay_url %></p>
-    <p><a href="https://www.paypal.com/">※ paypal.meの詳細はこちら</a></p>
+    <p>[必須] 画像を選択してください</p>
+    <p><%= f.file_field :image %></p>
     <p><%= f.submit "送信", class: 'btn' %></p>
   <% end %>
 </div>
